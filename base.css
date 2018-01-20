@@ -1,0 +1,40 @@
+:root {
+  --yellow: #ffcc00;
+  --black: #272727;
+}
+
+html {
+  background-image: linear-gradient(110deg, rgba(242,120,0,.1), rgba(42,20,0,.7)), url('bg.jpg');
+  box-sizing: border-box;
+  font-family: helvetica;
+  font-weight: 990;
+  font-size: 10px;
+  color: var(--black);
+}
+
+body {
+  /* background-image: linear-gradient(30deg, rgba(254,120,0,.03), rgba(42,20,0,.97)); */
+  background-size: auto;
+  min-height: calc(100vh - 100px);
+  margin: 50px;
+  background-position: fixed;
+  letter-spacing: -1px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  margin 0 0 5px 0;
+}
+
+.item {
+  display:grid;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid rgba(0,0,0,.03);
+  border-radius:3px;
+  font-size:33px;
+  background-color: var(--yellow);
+}
+
+.item p {
+  margin 0 0 5px 0;
+}
