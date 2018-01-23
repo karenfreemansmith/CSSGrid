@@ -1,7 +1,21 @@
+<!DOCTYPE htm>
+<head>
+  <meta charset="utf-8">
+
 <title>CSSGrid Keyboard</title>
 <link rel="stylesheet" href="base.css">
 <style>
-
+  h2 {
+    color: var(--yellow);
+    font-size: 5em;
+  }
+  .playing {
+    transform:scale(1.1);
+    border-color: #ffc600;
+    background-color: var(--black);
+    color: #ffc600;
+    box-shadow: 0 0 10px #ffc600;
+  }
   .container {
     margin-top: 32%;
     display:grid;
@@ -9,117 +23,154 @@
     grid-template-rows: repeat(5,50px);
     grid-gap: 3px;
   }
-.space {
-  grid-column: span 7;
-}
-.big {
-  grid-column: span 2;
-}
-.tall{
-  grid-row: span 2;
-}
-.last {
-  grid-gap: 4px;
-}
+  .space {
+    grid-column: span 7;
+  }
+  .big {
+    grid-column: span 2;
+  }
+  .tall{
+    grid-row: span 2;
+  }
+  .last {
+    grid-gap: 4px;
+  }
+  .key {
+    transition: all 0.15s;
+  }
+
 </style>
 </head>
 <body>
-
+  <!-- <h2>Press a key to see the keycode: <span id="code"></span> <span id="key"></span></h2> -->
 <div class="container">
-  <div class="item">~</div>
-  <div class="item">1</div>
-  <div class="item">2</div>
-  <div class="item">3</div>
-  <div class="item">4</div>
-  <div class="item">5</div>
-  <div class="item">6</div>
-  <div class="item">7</div>
-  <div class="item">8</div>
-  <div class="item">9</div>
-  <div class="item">0</div>
-  <div class="item">-</div>
-  <div class="item">=</div>
-  <div class="item last">bs</div><div class="blank"></div>
-  <div class="item">ins</div>
-  <div class="item">home</div>
-  <div class="item last">pu</div><div class="blank"></div>
-  <div class="item">num</div>
-  <div class="item">/</div>
-  <div class="item">*</div>
-  <div class="item">-</div>
-  <div class="item">tab</div>
-  <div class="item">Q</div>
-  <div class="item">W</div>
-  <div class="item">E</div>
-  <div class="item">R</div>
-  <div class="item">T</div>
-  <div class="item">Y</div>
-  <div class="item">U</div>
-  <div class="item">I</div>
-  <div class="item">O</div>
-  <div class="item">P</div>
-  <div class="item">[</div>
-  <div class="item">]</div>
-  <div class="item">\</div><div class="blank"></div>
-  <div class="item">del</div>
-  <div class="item">end</div>
-  <div class="item">pd</div><div class="blank"></div>
-  <div class="item">7</div>
-  <div class="item">8</div>
-  <div class="item">9</div>
-  <div class="item tall">+</div>
-  <div class="item">caps</div>
-  <div class="item">A</div>
-  <div class="item">S</div>
-  <div class="item">D</div>
-  <div class="item">F</div>
-  <div class="item">G</div>
-  <div class="item">H</div>
-  <div class="item">J</div>
-  <div class="item">K</div>
-  <div class="item">L</div>
-  <div class="item">;</div>
-  <div class="item">'</div>
-  <div class="item big">enter</div>
-  <div class="blank"></div><div class="blank"></div>
+  <div data-key="192" class="key">~</div>
+  <div data-key="49" class="key">1</div>
+  <div data-key="50" class="key">2</div>
+  <div data-key="51" class="key">3</div>
+  <div data-key="52" class="key">4</div>
+  <div data-key="53" class="key">5</div>
+  <div data-key="54" class="key">6</div>
+  <div data-key="55" class="key">7</div>
+  <div data-key="56" class="key">8</div>
+  <div data-key="57" class="key">9</div>
+  <div data-key="48" class="key">0</div>
+  <div data-key="173" class="key">-</div>
+  <div data-key="61" class="key">=</div>
+  <div data-key="8" class="key last">bs</div>
   <div class="blank"></div>
-  <div class="blank"></div><div class="blank"></div>
-  <div class="item">4</div>
-  <div class="item">5</div>
-  <div class="item">6</div>
-  <div class="item big">shift</div>
-  <div class="item">Z</div>
-  <div class="item">X</div>
-  <div class="item">C</div>
-  <div class="item">V</div>
-  <div class="item">B</div>
-  <div class="item">N</div>
-  <div class="item">M</div>
-  <div class="item">,</div>
-  <div class="item">.</div>
-  <div class="item">/</div>
-  <div class="item big">shift</div>
-<div class="blank"></div>
+  <div class="key">ins</div>
+  <div data-key="36" class="key">home</div>
+  <div data-key="33" class="key last">pu</div>
+  <div class="blank"></div>
+  <div data-key="12" class="key">C</div>
+  <div data-key="111" class="key">/</div>
+  <div data-key="106" class="key">*</div>
+  <div data-key="109" class="key">-</div>
+  <div data-key="9" class="key">tab</div>
+  <div data-key="81" class="key">Q</div>
+  <div data-key="87" class="key">W</div>
+  <div data-key="69" class="key">E</div>
+  <div data-key="82" class="key">R</div>
+  <div data-key="84" class="key">T</div>
+  <div data-key="89" class="key">Y</div>
+  <div data-key="85" class="key">U</div>
+  <div data-key="73" class="key">I</div>
+  <div data-key="79" class="key">O</div>
+  <div data-key="80" class="key">P</div>
+  <div data-key="219" class="key">[</div>
+  <div data-key="221" class="key">]</div>
+  <div data-key="220" class="key">\</div>
+  <div class="blank"></div>
+  <div data-key="46" class="key">del</div>
+  <div data-key="36" class="key">end</div>
+  <div data-key="33" class="key">pd</div>
+  <div class="blank"></div>
+  <div data-key="103" class="key">7</div>
+  <div data-key="104" class="key">8</div>
+  <div data-key="105" class="key">9</div>
+  <div data-key="107" class="key tall">+</div>
+  <div data-key="20" class="key">caps</div>
+  <div data-key="65" class="key">A</div>
+  <div data-key="83" class="key">S</div>
+  <div data-key="68" class="key">D</div>
+  <div data-key="70" class="key">F</div>
+  <div data-key="71" class="key">G</div>
+  <div data-key="72" class="key">H</div>
+  <div data-key="74" class="key">J</div>
+  <div data-key="75" class="key">K</div>
+  <div data-key="76" class="key">L</div>
+  <div data-key="59" class="key">;</div>
+  <div class="key">'</div>
+  <div data-key="13" class="key big">enter</div>
+  <div class="blank"></div>
+  <div class="blank"></div>
+  <div class="blank"></div>
+  <div class="blank"></div>
+  <div class="blank"></div>
+  <div data-key="100" class="key">4</div>
+  <div data-key="101" class="key">5</div>
+  <div data-key="102" class="key">6</div>
+  <div data-key="16" class="key big">shift</div>
+  <div data-key="90" class="key">Z</div>
+  <div data-key="88" class="key">X</div>
+  <div data-key="67" class="key">C</div>
+  <div data-key="86" class="key">V</div>
+  <div data-key="66" class="key">B</div>
+  <div data-key="78" class="key">N</div>
+  <div data-key="77" class="key">M</div>
+  <div data-key="188" class="key">,</div>
+  <div data-key="190" class="key">.</div>
+  <div data-key="191" class="key">/</div>
+  <div data-key="16" class="key big">shift</div>
+  <div class="blank"></div>
   <div class="balnk"></div>
-  <div class="item">up</div>
-  <div class="balnk"></div><div class="blank"></div>
-  <div class="item">1</div>
-  <div class="item">2</div>
-  <div class="item">3</div>
-  <div class="item tall">rtn</div>
-  <div class="item">ctr</div>
-  <div class="item">opt</div>
-  <div class="item">alt</div>
-  <div class="item space">space</div>
-  <div class="item">alt</div>
-  <div class="item">opt</div>
-  <div class="item">scroll</div>
-  <div class="item">ctr</div><div class="blank"></div>
-  <div class="item">left</div>
-  <div class="item">down</div>
-  <div class="item">right</div><div class="blank"></div>
-  <div class="item big">0</div>
-  <div class="item">.</div>
+  <div data-key="38" class="key">up</div>
+  <div class="balnk"></div>
+  <div class="blank"></div>
+  <div data-key="97" class="key">1</div>
+  <div data-key="98" class="key">2</div>
+  <div data-key="99" class="key">3</div>
+  <div data-key="13" class="key tall">rtn</div>
+  <div data-key="17" class="key">ctr</div>
+  <div data-key="224" class="key">opt</div>
+  <div data-key="18" class="key">alt</div>
+  <div data-key="32" class="key space">space</div>
+  <div data-key="18" class="key">alt</div>
+  <div data-key="224" class="key">opt</div>
+  <div data-key="93" class="key">menu</div>
+  <div data-key="17" class="key">ctr</div>
+  <div class="blank"></div>
+  <div data-key="37" class="key">left</div>
+  <div data-key="40" class="key">down</div>
+  <div data-key="39" class="key">right</div>
+  <div class="blank"></div>
+  <div data-key="96" class="key big">0</div>
+  <div data-key="110" class="key">.</div>
 </div>
+<audio id='sound' src="click_x.wav"></audio>
+
+<script>
+
+function playSound(e) {
+  const audio = document.querySelector(`#sound`);
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+  if(!audio) return;
+  audio.currentTime=0;
+  audio.play();
+  key.classList.add('playing');
+}
+function removeTransition(e) {
+  if(e.propertyName !== 'transform') return;
+  this.classList.remove('playing');
+}
+const keys = document.querySelectorAll('.key');
+keys.forEach(key => key.addEventListener("transitionend", removeTransition));
+window.addEventListener('keydown', function(e) {
+  // document.getElementById("code").innerHTML = e.keyCode;
+  // document.getElementById("key").innerHTML = "("+ e.key +")";
+  playSound(e);
+  });
+</script>
 </body>
 </html>
