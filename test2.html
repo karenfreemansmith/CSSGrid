@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:url"                content="http://thepracticetest.com/test2.html" />
+<meta property="og:title"              content="Can you beat me score?" />
+<meta property="og:description"        content="Practice for the CritiCall exam by taking this super challenging data entry test." />
+<meta property="og:image"              content="http://thepracticetest.com/img/criticall.png" />
+<meta property="og:image:width" content="400" />
+<meta property="og:image:height" content="300" />
+<link rel="stylesheet" href="base.css">
+<style>
+button {
+  width: 50%;
+  display: block;
+  margin: auto;
+  font-size: 5em;
+  font-family: monospace;
+}
+/* The Modal (background) */
+.modal {
+   display: none; /* Hidden by default */
+   position: fixed; /* Stay in place */
+   z-index: 1; /* Sit on top */
+   left: 0;
+   top: 0;
+   width: 100%; /* Full width */
+   height: 100%; /* Full height */
+   overflow: auto; /* Enable scroll if needed */
+   background-color: rgb(0,0,0); /* Fallback color */
+   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+   background-color: #fefefe;
+   margin: 15% auto; /* 15% from the top and centered */
+   padding: 20px;
+   border: 1px solid #888;
+   width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+   color: #aaa;
+   float: right;
+   font-size: 28px;
+   font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+   color: black;
+   text-decoration: none;
+   cursor: pointer;
+}
+</style>
+
+</head>
+<body>
+<script>
+window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '2482002645357331',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v2.11'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+ </script>
+<!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
+
+ <!-- The Modal -->
+ <div id="myModal" class="modal">
+
+ <!-- Modal content -->
+ <div class="modal-content">
+   <span class="close">&times;</span>
+   <h3>Your got 34 WPM - Keep Practicing</h3>
+   <input type='text' id='yourName'>
+   <img src="http://thepracticetest.com/img/criticall.png">
+   <button>Save Score</button>
+   <button id="shareBtn">Share on Facebook</button>
+   <button>Cancel</button>
+ </div>
+
+ </div>
+
+ <script>
+ var modal = document.getElementById('myModal');
+ var btn = document.getElementById("myBtn");
+ var span = document.getElementsByClassName("close")[0];
+
+ btn.onclick = function() {
+     modal.style.display = "block";
+ }
+
+ span.onclick = function() {
+     modal.style.display = "none";
+ }
+
+ window.onclick = function(event) {
+     if (event.target == modal) {
+         modal.style.display = "none";
+     }
+ }
+
+ function randomNumber(n1,n2){
+ 	n2=n2-n1;
+ 	var n = Math.floor(Math.random()*n2)+n1;
+ 	return n;
+ }
+
+ document.getElementById('shareBtn').onclick = function() {
+  FB.ui({
+    method: 'share',
+    display: 'popup',
+    href: 'http://thepracticetest.com/test2.html',
+    quote: 'I got '+ randomNumber(2400,16999) +' kph!',
+  }, function(response){});
+}
+</script>
+</body>
+</html>

@@ -169,6 +169,7 @@ keys.forEach(key => key.addEventListener("transitionend", removeTransition));
 window.addEventListener('keydown', function(e) {
   // document.getElementById("code").innerHTML = e.keyCode;
   // document.getElementById("key").innerHTML = "("+ e.key +")";
+  if(e.which === 8){ e.preventDefault(); }
   playSound(e);
   });
 </script>

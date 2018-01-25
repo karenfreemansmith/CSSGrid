@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="base.css">
+<style>
+button {
+  width: 50%;
+  display: block;
+  margin: auto;
+  font-size: 5em;
+  font-family: monospace;
+}
+.js-modal {
+  /* Take the box out of the flow, so that it could look like a modal box */
+  position: absolute;
+
+  /* Avoid the awkwardly stretchy box on bigger screens */
+  max-width: 450px;
+
+  /* Aligning it to the absolute center of the page */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* Some cosmetics */
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .1);
+}
+
+.js-modal-hidden {
+  display: none;
+}
+
+/* Make the media inside the box adapt the width of the parent */
+.js-modal img,
+.js-modal iframe,
+.js-modal video {
+  max-width: 100%;
+}
+
+/* Make the inner element relatively-positioned to contain the close button */
+.js-modal-inner {
+  position: relative;
+  padding: 10px;
+}
+
+/* Close button */
+.js-modal-close {
+  font-size: 10px;
+
+  /* Take it out of the flow, and align to the top-left corner */
+  position: absolute;
+  top: -10px;
+  right: -10px;
+
+  /* Size it up */
+  width: 24px;
+  height: 24px;
+
+  /* Text-alignment */
+  text-align: center;
+
+  /* Cosmetics */
+  color: #eee;
+  border-width: 0;
+  border-radius: 100%;
+  background-color: black;
+}
+.darken {
+  background-image: linear-gradient(110deg, rgba(242,120,0,.1), rgba(42,20,0,.7));
+}
+</style>
+<script>
+let createModal = (modalContent) => {
+  // Definitions
+  let modal = document.createElement("div"),
+      modalStyle = document.createElement("style"),
+      modalCSS = '.js-modal{ position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(0, 0, 0, .1); max-width: 650px; border-radius: 5px; } .js-modal img, .js-modal iframe, .js-modal video{ max-width: 100%; } .js-modal-inner{ position: relative; padding: 10px; } .js-modal-close{ position: absolute; top: -10px; right: -10px; background-color: black; color: #eee; border-width: 0; font-size: 10px; height: 24px; width: 24px; border-radius: 100%; text-align: center; }',
+      modalClose = '<button class="js-modal-close" id="js_modal_close">X</button>',
+      theBody = document.getElementsByTagName('body')[0],
+      theHead = document.getElementsByTagName('head')[0];
+
+  // Add content and attributes to the modal
+  modal.setAttribute("class", "js-modal");
+  modal.innerHTML = '<div class="js-modal-inner">' + modalContent + modalClose + '</div>';
+  theBody.appendChild(modal);
+  theBody.classList.add('darken');
+
+  modalClose = document.querySelector("#js_modal_close");
+
+  // Add the modal styles dynamically
+  if(modalStyle.styleSheet){
+      modalStyle.styleSheet.cssText = modalCSS;
+  } else {
+      modalStyle.appendChild(document.createTextNode(modalCSS));
+  }
+  theHead.appendChild(modalStyle);
+
+  // Close the modal on button-click
+  if(modalClose) {
+    modalClose.addEventListener('click', function() {
+      modal.remove();
+      modalStyle.remove();
+      theBody.classList.remove('darken');
+    });
+  }
+}
+
+</script>
+</head>
+<body>
+  <h1>A Headline Element</h1>
+<button onclick="createModal('<h1>I got 78 wpm! Can you do better?</h1><p>Share on Facebook</p>');">click here</button>
+<h3>And some other page text to see how that "overlay works", it if works at all</h3>
+</body>
+</html>
