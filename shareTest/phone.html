@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Practice Test - South Africa</title>
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-16529910-26"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-16529910-34');
+  </script>
+  <div class="container">
+  <header class="text-center">
+    <div class="row">
+      <div class="col-xs-4">
+        <img src="Titus Academy logoJPG.jpg" class="img-responsive">
+      </div>
+      <div class="col-xs-8">
+        <h1>Titus Academy Data Entry Practice</h1>
+        <h3>Powered by <a href="https://thepracticetest.com">The Practice Test</a><h3>
+      </div>
+    </div>
+  </header>
+  <div class='text-center'>
+    <h2>Phone Number Practice</h2>
+  </div>
+  <nav>
+    <h4 class="text-center"><a href="address.html">Address Practice</a> | <a href="phone.html">Phone Number Practice</a> | <a href="id.html">Id Number Practice</a> | <a href="vin.html">VIN Number Practice</a> | <a href="proveit.html">Data Entry Test</a></h4>
+  </nav>
+
+    <div class="row">
+      <div class='col-xs-6'>
+        <h3><span id='info'>Type this...</span><button onClick="nextText()" class="btn error pull-right">CHANGE TEST</button></h3>
+        <p id='typed' class='prompt'>Loading...</p></div>
+      <div class='col-xs-6'>
+        <h3 id='score' class='text-right'>Test begins when you start typing...</h3>
+        <textarea id='typing' class="form-control" rows="4" onKeyUp="checkText();"></textarea>
+        <p id='results' class='error text-right'></p></div>
+    </div>
+
+  <footer class="text-center">
+    Powered by <a href="https://thepracticetest.com">The Practice Test</a>. Copyright &copy; 2018. ThePracticeTest.com
+  </footer>
+  </div>
+  <script src="scripts.js"></script>
+  <script>
+    function nextText() {
+      myText="";
+      document.getElementById('typing').value='';
+      //000 000 0000
+      for(var i=0; i<15; i++) {
+        myText += "0" + randomNumber(10,99) + " " + randomNumber(100,999) + " " + randomNumber(1000,9999) + " ";
+      }
+
+      myText += "0" + randomNumber(10,99) + " " + randomNumber(100,999) + " " + randomNumber(1000,9999);
+      document.getElementById('info').innerHTML= "Test has " + myText.length + " characters";
+      document.getElementById('typed').innerHTML=myText;
+    }
+    nextText();
+  </script>
+</body>
+</html>

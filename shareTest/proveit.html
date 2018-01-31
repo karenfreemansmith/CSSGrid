@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Practice Test - South Africa</title>
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-16529910-26"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-16529910-34');
+  </script>
+  <div class="container">
+  <header class="text-center">
+    <div class="row">
+      <div class="col-xs-4">
+        <img src="Titus Academy logoJPG.jpg" class="img-responsive">
+      </div>
+      <div class="col-xs-8">
+        <h1>Titus Academy Data Entry Practice</h1>
+        <h3>Powered by <a href="https://thepracticetest.com">The Practice Test</a><h3>
+      </div>
+    </div>
+  </header>
+  <div class='text-center'>
+    <h2>Data Entry Test</h2>
+  </div>
+  <nav>
+    <h4 class="text-center"><a href="address.html">Address Practice</a> | <a href="phone.html">Phone Number Practice</a> | <a href="id.html">Id Number Practice</a> | <a href="vin.html">VIN Number Practice</a> | <a href="proveit.html">Data Entry Test</a></h4>
+  </nav>
+
+  <div class='row'>
+    <div class='col-sm-6 text-right'>
+      <p id="firstnameQ" class="hint"></p>
+    </div>
+    <div class='col-sm-6'>
+      <p><input type="text" name="firstname" class='form-control' onkeyup='score()' id="firstnameA"/></p>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-6 text-right'>
+      <p id="surnameQ" class="hint"></p>
+    </div>
+    <div class='col-sm-6'>
+      <p><input type="text" name="lastname" class='form-control' onkeyup='score()' id="surnameA" /></p>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-6 text-right'>
+      <p id="addressQ" class="hint"></p>
+    </div>
+    <div class='col-sm-6'>
+      <p><input type="text" name="street" class='form-control' onkeyup='score()' id="addressA" /></p>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-6 text-right'>
+      <p id="cityQ" class="hint"></p>
+    </div>
+    <div class='col-sm-6'>
+      <p><input type="text" name="city" class='form-control' onkeyup='score()' id="cityA" /></p>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-6 text-right'>
+      <p id="stateQ" class="hint"></p>
+    </div>
+    <div class='col-sm-6'>
+      <p><input type="text" name="state" class='form-control' onkeyup='score()' id="stateA" /></p>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-6 text-right'>
+      <p id="zipQ" class="hint"></p>
+    </div>
+    <div class='col-sm-6'>
+      <p><input type="text" name="zip" class='form-control' onkeyup='score()' id="zipA" /></p>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-6 text-right'>
+      <p id="phoneQ" class="hint"></p>
+    </div>
+    <div class='col-sm-6'>
+      <p><input type="text" name="telephone" class='form-control' onkeyup='score()' id="phoneA" /></p>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-6 text-right'>
+      <p id="idQ" class="hint"></p>
+    </div>
+    <div class='col-sm-6'>
+      <p><input type="text" name="id" class='form-control' onkeyup='score()' id="idA" /></p>
+    </div>
+  </div>
+<hr>
+<div class='row'>
+  <div class='col-sm-6 text-right'>
+    <p><strong><span id='score'></span> <span id="stats"></span></strong></p>
+  </div>
+  <div class='col-sm-6'>
+    <form name="testControl">
+    <input id='start' type="button" value="Start Test" onclick="nextRecord()" disabled class='btn btn-success'>
+    <input id='next' type="button" value="Next Record" onclick="nextRecord()" disabled class='btn btn-success'>
+    <input id='stop' type="button" value="End Test" onclick="endTest()" disabled class='btn btn-danger'><br>
+    <input type="checkbox" name="showErrors" id="showErrors" value="showErrors" onchange="score()" checked> Show Errors
+    </form>
+  </div>
+</div>
+
+  <footer class="text-center">
+    Powered by <a href="https://thepracticetest.com">The Practice Test</a>. Copyright &copy; 2018. ThePracticeTest.com
+  </footer>
+  </div>
+  <style>
+  .hint {
+    font-family: monospace;
+    font-size: 1.2em;
+  }
+  </style>
+
+  <script>
+  var correct=0,total=0,attempted=0,correctAll=0,totalAll=0,attemptedAll=0,s=0,t=false,c=null;
+  var firstnameQ = document.querySelector('#firstnameQ');
+  var surnameQ = document.querySelector('#surnameQ');
+  var addressQ = document.querySelector('#addressQ');
+  var cityQ = document.querySelector('#cityQ');
+  var stateQ = document.querySelector('#stateQ');
+  var zipQ = document.querySelector('#zipQ');
+  var phoneQ = document.querySelector('#phoneQ');
+  var idQ = document.querySelector('#idQ');
+  var firstnameA = document.querySelector('#firstnameA');
+  var surnameA = document.querySelector('#surnameA');
+  var addressA = document.querySelector('#addressA');
+  var cityA = document.querySelector('#cityA');
+  var stateA = document.querySelector('#stateA');
+  var zipA = document.querySelector('#zipA');
+  var phoneA = document.querySelector('#phoneA');
+  var idA = document.querySelector('#idA');
+  var startBtn = document.querySelector('#start');
+  var nextBtn = document.querySelector('#next');
+  var endBtn = document.querySelector('#stop');
+  var showErrors = document.querySelector('#showErrors');
+  var stats = document.querySelector('#stats');
+
+  function nextRecord() {
+    if(!t) {
+      startTimerKPH();
+      correctAll=0;
+      totalAll=0;
+      attemptedAll=0;
+    }
+      score();
+      correctAll=correct;
+      totalAll=total;
+      attemptedAll=attempted;
+      clearRecord();
+      myText = makeRecord();
+      var nextRecord = myText.split(", ");
+      firstnameQ.innerHTML=nextRecord[0];
+      surnameQ.innerHTML=nextRecord[1];
+      addressQ.innerHTML=nextRecord[2];
+      cityQ.innerHTML=nextRecord[3];
+      stateQ.innerHTML=nextRecord[4];
+      zipQ.innerHTML=nextRecord[5];
+      phoneQ.innerHTML=nextRecord[6];
+      idQ.innerHTML=nextRecord[7];
+      highlightErrors();
+  }
+
+  function endTest() {
+    score();
+    stopTimer();
+  }
+
+  function clearRecord() {
+    firstnameQ.innerHTML="";
+    surnameQ.innerHTML="";
+    addressQ.innerHTML="";
+    cityQ.innerHTML="";
+    stateQ.innerHTML="";
+    zipQ.innerHTML="";
+    phoneQ.innerHTML="";
+    firstnameA.value="";
+    surnameA.value="";
+    addressA.value="";
+    cityA.value="";
+    stateA.value="";
+    zipA.value="";
+    phoneA.value="";
+    idA.value="";
+  }
+
+  function score() {
+    accuracy=0;
+    correct=correctAll;
+    total=totalAll;
+    attempted=attemptedAll;
+    highlightErrors();
+
+    total+=firstnameQ.innerHTML.length;
+    attempted+=firstnameA.value.length;
+    if (firstnameQ.innerHTML===firstnameA.value) {
+      correct+=firstnameA.value.length;
+    }
+    total+=surnameQ.innerHTML.length;
+    attempted+=surnameA.value.length;
+    if (surnameQ.innerHTML===surnameA.value) {
+      correct+=surnameA.value.length;
+    }
+    total+=addressQ.innerHTML.length;
+    attempted+=addressA.value.length;
+    if (addressQ.innerHTML===addressA.value) {
+      correct+=addressA.value.length;
+    }
+    total+=cityQ.innerHTML.length;
+    attempted+=cityA.value.length;
+    if (cityQ.innerHTML===cityA.value) {
+      correct+=cityA.value.length;
+    }
+    total+=stateQ.innerHTML.length;
+    attempted+=stateA.value.length;
+    if (stateQ.innerHTML===stateA.value) {
+      correct+=stateA.value.length;
+    }
+    total+=zipQ.innerHTML.length;
+    attempted+=zipA.value.length;
+    if (zipQ.innerHTML===zipA.value) {
+      correct+=zipA.value.length;
+    }
+    total+=phoneQ.innerHTML.length;
+    attempted+=phoneA.value.length;
+    if (phoneQ.innerHTML===phoneA.value) {
+      correct+=phoneA.value.length;
+    }
+    total+=idQ.innerHTML.length;
+    attempted+=idA.value.length;
+    if (idQ.innerHTML===phoneA.value) {
+      correct+=idA.value.length;
+    }
+    accuracy=(correct/total)*100
+    stats.innerHTML="Accuracy: " + accuracy.toFixed(2) + "%";
+  }
+
+
+  function startTimerKPH() {
+  	c = setInterval(function(){showKPH(attempted);},1000);
+  	t = true;
+    s = 0;
+    startBtn.disabled = true;
+    nextBtn.disabled = false;
+    endBtn.disabled = false;
+  }
+
+  function stopTimer() {
+  	clearInterval(c);
+  	t = false;
+    startBtn.disabled = false;
+    nextBtn.disabled = true;
+    endBtn.disabled = true;
+  }
+
+  function highlightErrors() {
+    if(showErrors.checked) {
+      if (firstnameQ.innerHTML===firstnameA.value) {
+        firstnameQ.classList.remove('bg-danger');
+      } else {
+        firstnameQ.classList.add('bg-danger');
+      }
+      if (surnameQ.innerHTML===surnameA.value) {
+        surnameQ.classList.remove('bg-danger');
+      } else {
+        surnameQ.classList.add('bg-danger');
+      }
+      if (addressQ.innerHTML===addressA.value) {
+        addressQ.classList.remove('bg-danger');
+      } else {
+        addressQ.classList.add('bg-danger');
+      }
+      if (cityQ.innerHTML===cityA.value) {
+        cityQ.classList.remove('bg-danger');
+      } else {
+        cityQ.classList.add('bg-danger');
+      }
+      if (stateQ.innerHTML===stateA.value) {
+        stateQ.classList.remove('bg-danger');
+      } else {
+        stateQ.classList.add('bg-danger');
+      }
+      if (zipQ.innerHTML===zipA.value) {
+        zipQ.classList.remove('bg-danger');
+      } else {
+        zipQ.classList.add('bg-danger');
+      }
+      if (phoneQ.innerHTML===phoneA.value) {
+        phoneQ.classList.remove('bg-danger');
+      } else {
+        phoneQ.classList.add('bg-danger');
+      }
+      if (idQ.innerHTML===idA.value) {
+        idQ.classList.remove('bg-danger');
+      } else {
+        idQ.classList.add('bg-danger');
+      }
+    } else {
+      firstnameQ.classList.remove('bg-danger');
+      surnameQ.classList.remove('bg-danger');
+      addressQ.classList.remove('bg-danger');
+      cityQ.classList.remove('bg-danger');
+      stateQ.classList.remove('bg-danger');
+      zipQ.classList.remove('bg-danger');
+      phoneQ.classList.remove('bg-danger');
+      idQ.classList.remove('bg-danger');
+    }
+  }
+
+  function showKPH(keystrokes) {
+  	var score = 0;
+  	var hour = (s)/3600;
+  	score = (keystrokes)/(hour);
+  	score = parseInt(score);
+  	if (score>0) {
+  		document.getElementById('score').innerHTML=score + " KPH ";
+  	} else {
+  		document.getElementById('score').innerHTML="0 KPH";
+  	}
+  	s++;
+  }
+
+  function randomNumber(n1,n2){
+    n2=n2-n1;
+    var n = Math.floor(Math.random()*n2)+n1;
+    return n;
+  }
+
+  function makeRecord() {
+    var firstname = ["Caitlin", "Sarah", "Megan", "Amy", "Ammaarah", "Maria", "Jade", "Danielle", "Tasneem", "Amber", "Emma", "Hannah", "Jessica", "Christina", "Bianca", "Bella", "Michelle", "Zoe", "Ruth", "Anneke", "Charlotte", "Sameera", "Melissa", "Courtney", "Mishka", "Abbi", "Jess", "Iara", "Nicola", "Olivia", "Claudia", "Tanja", "Laila", "Lily", "Rachel", "Chantelle", "Emily", "Malaika", "Ashley", "Sego", "Vanessa", "Kristen", "Thiame'", "Priyanka", "Kayla", "Sam", "Mpu", "Fatima", "Munashe", "Jessame", "Nikita", "Candice", "Gemma", "Rebecca", "Nina", "Jennifer", "Ntokozo", "Mbali", "Lee-Ann", "Caressa", "Savannah", "Viki", "Alexandra", "Claire", "Joanna", "Raeesah", "Kayleigh", "Lesego","Princess", "Tracy", "Zara", "Saajidah", "Chloe", "Deby", "Tajah", "Zama", "Kimberly", "Leah", "Buhle", "Daniella", "Taila", "Kendal", "Ally", "Sharon", "Julia", "Tshepiso", "Thina", "Isla", "Jodi", "Raven", "Isabel", "Sue", "Elizabeth", "Ole", "Erin", "Nqobile", "Robyn", "Leigh", "William", "Emershan", "Luke", "Ethan", "Patrick", "Brendan", "Ebrahim", "Shane", "James", "Christopher", "Daniel", "Cameron", "Joshua", "Brett", "Armand", "Eugene", "Declan", "Matthew", "Jayden", "Andre", "Isaac", "Lungelo", "Tim", "Xavier", "Nicholas", "Thomas", "Calvin", "Ryan", "Meyer Bosman", "Spectra", "Ferdinand", "Alberto", "Lawrence", "Skihumbuzo", "Paul", "Darshan", "Phenyo", "Vaness", "Keagan", "Kizito", "Matome", "Reinhardt", "Ongama", "Retth", "Eeshaan", "Franco", "Hugues", "Tom", "Theolin", "Laura", "Zenzo", "Kyron", "Marcus", "Kofi", "Menzi", "Leon", "Saveran", "Wikus", "Ruwaldo", "Divashen", "Juan", "Duke", "Maurice", "Alfred", "Thandaza", "Jagger", "Abdul Mueed", "Zunaid", "Larey", "Mac", "Oshalan", "Rene", "Bryan", "Arnauld", "Sylvester", "Joe", "Jannie", "Nkosinathi", "Eric", "Arfin", "Darian", "Abel", "Oliver", "Ishmael Ntini", "Njabulo", "Cullen", "Duncan", "Charlie", "Mujahid", "Benedict", "Sammoh", "Emmanuel", "Dehan", "Liberty", "Hein", "Pieter", "Andrew", "Lanchesester", "Valerio"];
+    var surname = ["Naidoo", "Govender", "Botha", "Pillay", "Smith", "Pretorius", "Fourie", "Venter", "Nel", "Moodley", "Coetzee", "Jacobs", "Kruger", "Smit", "Singh", "Erasmus", "Meyer", "Chetty", "Joubert", "Williams", "Steyn", "Swanepoel", "Vijoen", "Potgieter", "Swart", "Louw", "Oosthuizen", "Strydom", "Marais", "Reddy", "Engelbrecht", "Muller", "Barnard", "Adams", "Naicker", "Grobler", "Visser", "Khan", "Bezuidenhout", "Ferreira", "Prinsloo", "Abrahams", "Pienaar", "Burger", "Jordaan", "Maharaj", "Synman", "Labuschagne", "Brown", "Kotze", "Vorster", "Bester", "Schoeman", "Jones", "Groenewald", "Rossouw", "Thomas", "Pieterse", "Davids", "Cloete", "Theron", "Johnson", "Roux", "Dlamini", "Badenhorst", "Coetzer", "Scheepers", "Naude", "Martin", "Wilsom", "Boshoff", "Botes", "Cronje", "Wessels", "Vermeulen", "Hendricks", "Ndlovu", "Khumato", "Petersen", "Lombard", "Jacobus", "Steenkamp", "Nkosi", "Gouws", "Liebenberg", "Hattingh", "James", "Els", "Myburgh", "Naidu", "Taylor", "Basson", "Jansen", "Malan", "Gerber", "Mostert", "Booysen", "Vermaak", "Padayachee", "Brits", "Geldenhuys", "Beukes", "Lee", "Greyling", "Scholtz", "Human", "Daniels", "Bekker", "Maritz", "Terblanche", "Roos", "Dreyer", "Anderson", "Isaacs", "Thompson", "Lubbe", "Scott", "Roberts", "Stander", "Harris", "Esterhuizen", "Ismail", "Jooste", "Bothma", "Sithole", "Lourens", "Delport", "Lewis", "Kriel", "Joseph", "Shutte", "Birtz", "Mahlangu", "Bosman", "Koekemoer", "Goosen", "Brink", "Green", "Mokoena", "Alexander"];
+    var street = ["Abrey Road", "Sparks Road", "Adams Road",
+    "Albert Street", "Alice Street", "Aliwal Street", "Argyle Road", "Baber Street",
+    "Beatrice Street", "Bellair Road", "Bellevue Road", "Berea Road",
+    "Bideford Road", "Bikaner Road", "Dharwar Road", "Blair Atholl Road",
+    "Booth Road", "Spine Road", "Brickfield Road", "Brickhill Road",
+    "Broadway", "Swapo Road", "Sylvester Ntuli Road", "Felix Dlamin Road",
+    "Harry Gwala Road", "Rodger Sishi Road", "Krishna Rabilal Road",
+    "Zinto Cele Road", "Kind Dinuzulu Road", "Amilcar Cabral Road", "Vusi Mzimele Road",
+    "Charlotte Maxeke Street", "J N Singh Street", "Sandile Thusi Road",
+    "Samore Machel Street", "Johannes Nkosi Street", "Ingcunce Road",
+    "Khotha Mkhunya Road", "Moses Kothane Road", "Dr. Yusuf Dadoo Street",
+    "Richard Walne Road", "Mary Thiphe Street", "M L Sultan Road", "R Khan Circle",
+    "J B Marks Road", "Dr. AB Xuma Street","Problem Mkhize Road",
+    "Gladys Manzi Road","Helen Joseph Road", "Grey Street",
+    "Canal Road", "Centenary Road", "Chatsworth Circle", "Chelmsford Road",
+    "Commercial Road", "Cowey Road", "Edith Benson Road", "Dartnel Crescent",
+    "Mitchell Road", "Davenport Road", "Dharwar Road", "Bikaner Road",
+    "Dores Lane", "Duranta Road", "Edwin Swales VC Drive", "Essenwood Road",
+    "Field Street", "First Avenue", "Stamfordhill Road", "Fischer Road",
+    "Fisher Street", "Francois Road", "Frere Road", "Gale Street", "Gardiner Street",
+    "Goble Road", "Gray Park Road", "Kensingston Drive", "King George V Avenue",
+    "South Ridge Road", "Kingsway", "KwaMashu Highway", "Lamontville Main",
+    "Hull Road", "Leopold Street", "Lorne Street", "Manning Road", "Mansfield Road",
+    "Marine Parade", "Marriot Road", "Masonic Grove","McDonald Road", "Moss Street",
+    "Moore Road", "Windermere Road", "Winder Street", "Willowvale Road", "Williams Road",
+    "West Street", "Watson Highway", "Warwick Avenue", "Walter Gilbert Road",
+    "Victoria Embankment", "Victoria Street", "Stanger Street", "Sydenham Road",
+    "St George\'s Street", "Smith Street", "Lillian Ngoyi Road", "Albert Dlomo Road",
+    "Khuzimpi Shezi Road", "Ushukela Drive", "Isaiah Ntshangase Road",
+    "Margaret Mncadi Avenue", "Bertha Mkhize Street", "Maud Mfusi Street",
+    "Queen Mary Avenue", "Point Road", "Pelican Drive", "Ordinance Road",
+    "Bram Fischer Road", "Russell Street", "Prince Alfred Street",
+    "Prince Edward Street", "Henry Pennington Road", "Shepstone Road",
+    "Anton Lembede Street", "Malibongwe Drive", "Johannesburg Ring Road",
+    "Louis Botha Avenue", "Jan Smuts Avenue", "Beyers Naudé Drive",
+    "Commissioner Street", "Adderley Street", "Long Street", "Strand Street"];
+    var city = [
+    "Cape Town, WC, 8001", "Pretoria, GT, 0002", "Johannesburg, GT, 2001",
+    "Durban, NL, 4401", "Port Elizabeth, EC, 6001", "East London, EC, 5201",
+    "Bloemfontein, FS, 9301", "Welkom, FS, 9459", "Kimberley, NC, 8301",
+    "Upington, NC, 8801", "Beaufort West, WC, 6970", "Oudtshoorn, WC, 6625",
+    "Mthatha, EC, 5147", "Richards Bay, NL, 3900", "Nelspruit, MP, 1201",
+    "Hazyview, MP, 1242", "Mokopane, LP, 0601", "Polokwane, LP, 0601",
+    "George, WC, 6529", "Jeffreys Bay, EC, 6330",
+    "Mossel Bay, WC, 6506", "Hermanus, WC, 7200", "Stellenbosch, WC, 7600",
+    "Pietermaritzburg, NL, 3201", "Dolphin Coast, NL, 4404", "Umtata, EC, 5100"];
+    var months = ["01","02","03","04","05","06","07","08","09","10","11","12"];
+    var days = ["01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30",];
+
+    var str = firstname[randomNumber(0,firstname.length-1)] + ", ";
+    str += surname[randomNumber(0,surname.length-1)];
+    str += ", " + randomNumber(1,19999) + " " + street[randomNumber(0,street.length-1)];
+    str += ", " + city[randomNumber(0,city.length-1)];
+    str += ", " + "0" + randomNumber(10,99) + " " + randomNumber(100,999) + " " + randomNumber(1000,9999);
+    str += ", " + randomNumber(10,99) + months[randomNumber(1,11)] + days[randomNumber(0,30)] + " " + randomNumber(1111,9999) + " 08 " + randomNumber(0,9);
+    return str;
+  }
+
+  endTest();
+  </script>
+</body>
+</html>

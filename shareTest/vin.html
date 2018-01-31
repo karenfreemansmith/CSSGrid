@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Practice Test - South Africa</title>
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-16529910-26"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-16529910-34');
+  </script>
+  <div class="container">
+  <header class="text-center">
+    <div class="row">
+      <div class="col-xs-4">
+        <img src="Titus Academy logoJPG.jpg" class="img-responsive">
+      </div>
+      <div class="col-xs-8">
+        <h1>Titus Academy Data Entry Practice</h1>
+        <h3>Powered by <a href="https://thepracticetest.com">The Practice Test</a><h3>
+      </div>
+    </div>
+  </header>
+  <div class='text-center'>
+    <h2>VIN Number Practice</h2>
+  </div>
+  <nav>
+    <h4 class="text-center"><a href="address.html">Address Practice</a> | <a href="phone.html">Phone Number Practice</a> | <a href="id.html">Id Number Practice</a> | <a href="vin.html">VIN Number Practice</a> | <a href="proveit.html">Data Entry Test</a></h4>
+  </nav>
+
+    <div class="row">
+      <div class='col-xs-6'>
+        <h3><span id='info'>Type this...</span><button onClick="nextText()" class="btn error pull-right">CHANGE TEST</button></h3>
+        <p id='typed' class='prompt'>Loading...</p></div>
+      <div class='col-xs-6'>
+        <h3 id='score' class='text-right'>Test begins when you start typing...</h3>
+        <textarea id='typing' class="form-control" rows="5" onKeyUp="checkText();"></textarea>
+        <p id='results' class='error text-right'></p></div>
+    </div>
+  <footer class="text-center">
+    Powered by <a href="https://thepracticetest.com">The Practice Test</a>. Copyright &copy; 2018. ThePracticeTest.com
+  </footer>
+  </div>
+  <script src="scripts.js"></script>
+  <script>
+    function nextText() {
+      myText="";
+      document.getElementById('typing').value='';
+      var vin=['3A3V78JW6AD62929', '3V26KD0A5A517197', '2TN2ZWVG5X785076', 'Z2RJ6DKS0DX82564', 'JAREW1NF5E121781', 'JCRMN08U3NN19054', '3AXY116X06635650', 'ZVNKXE8R6EV51192', '2M4EX0996WC02501', 'JHSDWGVC7CX52683', '13T6RJW23XA01026', 'Z5Y40U2B0YN78956', '1GA5T6EC8VN56956', 'W6UUZTV603X98161', 'K3CBUJE53SR44902', '3L881MWE9FE13839', 'JGABXF4P4K712843', '41BMUYT82W424229', 'KC1JP5XB0NF32565', 'S54KPPAK13T41637', 'Z73MJVPP1V711479', '1NFYAF4AXNS10880', '28NRP96M8WU40233', '1LX5CZA07DK03123', '31VSE25JX5L00363', 'WBF43GXN84S79600', 'WMS1VMGY0TZ28356', 'K2VT2E5LXKA99098', 'SH7J8A536TE38704', '4D4P08Z0X9Z07684', '3NZ6ZV8JX3W96630', '2CS51EVB2GD58909', 'K27MLVVN6EL17618', 'WM969L4W6AF39236', 'Z42GZTWF54K35423', 'KBTFB10N7EG66346', '3BV1CF5279Z67373', '4CVTGJ6Y7BM03874', 'WCP2RJ461VS69103', '4M4X69KG3VG13952', '2VGWFDRE44660804', 'JTCLYNTP19U36057', 'Z5NF48LW5CG69214', '2C97XGGU19657437', '2N3DRJZB83921972', '2HC9ZKKW1DD75457', '3A5U9UWB7LM52083'];
+      for(var i=0; i<14; i++) {
+        myText += vin[randomNumber(0,vin.length-1)] + " ";
+      }
+
+      myText += vin[randomNumber(0,vin.length-1)];
+      document.getElementById('info').innerHTML= "Test has " + myText.length + " characters";
+      document.getElementById('typed').innerHTML=myText;
+    }
+    nextText();
+  </script>
+</body>
+</html>

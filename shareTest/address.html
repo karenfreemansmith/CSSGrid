@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Practice Test - South Africa</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-16529910-26"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-16529910-34');
+  </script>
+  <div class="container">
+  <header class="text-center">
+    <div class="row">
+      <div class="col-xs-4">
+        <img src="Titus Academy logoJPG.jpg" class="img-responsive" alt="Titus Academy Data Entry Practice">
+      </div>
+      <div class="col-xs-8">
+        <h1>Titus Academy Data Entry Practice</h1>
+        <h3>Powered by <a href="https://thepracticetest.com">The Practice Test</a><h3>
+      </div>
+    </div>
+  </header>
+  <div class='text-center'>
+    <h2>Address Practice</h2>
+  </div>
+  <nav>
+    <h4 class="text-center"><a href="address.html">Address Practice</a> | <a href="phone.html">Phone Number Practice</a> | <a href="id.html">Id Number Practice</a> | <a href="vin.html">VIN Number Practice</a> | <a href="proveit.html">Data Entry Test</a></h4>
+  </nav>
+
+
+  <div class="row">
+    <div class='col-xs-6'>
+      <h3><span id='info'>Type this...</span><button onClick="nextText()" class="btn error pull-right">CHANGE TEST</button></h3>
+      <p id='typed' class='prompt'>Loading...</p></div>
+    <div class='col-xs-6'>
+      <h3 id='score' class='text-right'>Test begins when you start typing...</h3>
+      <textarea id='typing' class="form-control" rows="12" onKeyUp="checkText();"></textarea>
+      </div>
+  </div>
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="row modal-content">
+    <span class="close">&times;</span>
+    <div class="col-xs-6">
+      <img src="share.png" class="img-responsive">
+    </div>
+    <div class="col-xs-6 text-center">
+      <h3 id='results' class='text-center'></h3>
+      <h4>Enter your name to save your score:</h4>
+      <input type='text' id='yourName'><button onclick="alert('saving...');">Save Score</button>
+      <h4>Share your success... challenge your friends!</h4>
+      <span id="facebookShare" class="fa fa-facebook"></span>
+      <span id="twitterShare" class="fa fa-twitter"></span>
+      <span id="linkedinShare" class="fa fa-linkedin"></span>
+    </div>
+  </div>
+
+  </div>
+  <footer class="text-center">
+    Powered by <a href="https://thepracticetest.com">The Practice Test</a>. Copyright &copy; 2018. ThePracticeTest.com
+  </footer>
+  </div>
+  <script src="scripts.js"></script>
+  <script>
+    function nextText() {
+      myText="";
+      document.getElementById('typing').value='';
+      var streetname=["Abrey Road", "Sparks Road", "Adams Road",
+      "Albert Street", "Alice Street", "Aliwal Street", "Argyle Road", "Baber Street",
+      "Beatrice Street", "Bellair Road", "Bellevue Road", "Berea Road",
+      "Bideford Road", "Bikaner Road", "Dharwar Road", "Blair Atholl Road",
+      "Booth Road", "Spine Road", "Brickfield Road", "Brickhill Road",
+      "Broadway", "Swapo Road", "Sylvester Ntuli Road", "Felix Dlamin Road",
+      "Harry Gwala Road", "Rodger Sishi Road", "Krishna Rabilal Road",
+      "Zinto Cele Road", "Kind Dinuzulu Road", "Amilcar Cabral Road", "Vusi Mzimele Road",
+      "Charlotte Maxeke Street", "J N Singh Street", "Sandile Thusi Road",
+      "Samore Machel Street", "Johannes Nkosi Street", "Ingcunce Road",
+      "Khotha Mkhunya Road", "Moses Kothane Road", "Dr. Yusuf Dadoo Street",
+      "Richard Walne Road", "Mary Thiphe Street", "M L Sultan Road", "R Khan Circle",
+      "J B Marks Road", "Dr. AB Xuma Street","Problem Mkhize Road",
+      "Gladys Manzi Road","Helen Joseph Road", "Grey Street",
+      "Canal Road", "Centenary Road", "Chatsworth Circle", "Chelmsford Road",
+      "Commercial Road", "Cowey Road", "Edith Benson Road", "Dartnel Crescent",
+      "Mitchell Road", "Davenport Road", "Dharwar Road", "Bikaner Road",
+      "Dores Lane", "Duranta Road", "Edwin Swales VC Drive", "Essenwood Road",
+      "Field Street", "First Avenue", "Stamfordhill Road", "Fischer Road",
+      "Fisher Street", "Francois Road", "Frere Road", "Gale Street", "Gardiner Street",
+      "Goble Road", "Gray Park Road", "Kensingston Drive", "King George V Avenue",
+      "South Ridge Road", "Kingsway", "KwaMashu Highway", "Lamontville Main",
+      "Hull Road", "Leopold Street", "Lorne Street", "Manning Road", "Mansfield Road",
+      "Marine Parade", "Marriot Road", "Masonic Grove","McDonald Road", "Moss Street",
+      "Moore Road", "Windermere Road", "Winder Street", "Willowvale Road", "Williams Road",
+      "West Street", "Watson Highway", "Warwick Avenue", "Walter Gilbert Road",
+      "Victoria Embankment", "Victoria Street", "Stanger Street", "Sydenham Road",
+      "St George\'s Street", "Smith Street", "Lillian Ngoyi Road", "Albert Dlomo Road",
+      "Khuzimpi Shezi Road", "Ushukela Drive", "Isaiah Ntshangase Road",
+      "Margaret Mncadi Avenue", "Bertha Mkhize Street", "Maud Mfusi Street",
+      "Queen Mary Avenue", "Point Road", "Pelican Drive", "Ordinance Road",
+      "Bram Fischer Road", "Russell Street", "Prince Alfred Street",
+      "Prince Edward Street", "Henry Pennington Road", "Shepstone Road",
+      "Anton Lembede Street", "Malibongwe Drive", "Johannesburg Ring Road",
+      "Louis Botha Avenue", "Jan Smuts Avenue", "Beyers Naudé Drive",
+      "Commissioner Street", "Adderley Street", "Long Street", "Strand Street"];
+      for(var i=0; i<4; i++) {
+        myText += randomNumber(1,19999) + " " + streetname[randomNumber(0,streetname.length-1)] + "; ";
+      }
+
+      myText += randomNumber(1,19999) + " " + streetname[randomNumber(0,streetname.length-1)];
+      document.getElementById('info').innerHTML= "Test has " + myText.length + " characters";
+      document.getElementById('typed').innerHTML=myText;
+    }
+    nextText();
+  </script>
+</body>
+</html>
